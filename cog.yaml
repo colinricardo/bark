@@ -1,0 +1,18 @@
+build:
+  gpu: true
+  cuda: "11.8"
+  python_version: "3.10"
+  python_packages:
+    - "boto3==1.26.121"
+    - "encodec==0.1.1"
+    - "funcy==2.0"
+    - "scipy==1.10.1"
+    - "tokenizers==0.13.3"
+    - "torch==2.0.0"
+    - "torchaudio==2.0.0"
+    - "tqdm==4.65.0"
+    - "transformers==4.28.1"
+  run:
+    - mkdir -p /root/.cache/torch/hub/checkpoints/ && wget --output-document "/root/.cache/torch/hub/checkpoints/encodec_24khz-d7cc33bc.th" "https://dl.fbaipublicfiles.com/encodec/v0/encodec_24khz-d7cc33bc.th"
+
+predict: "predict.py:Predictor"
